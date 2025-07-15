@@ -1,6 +1,7 @@
 import React, { useRef, useEffect } from 'react';
 import EventCard from '../components/EventCard';
 import StoryCard from '../components/StoryCard';
+import '../styles/globals.css';
 
 const NUM_STORY_CARDS = 10;
 
@@ -71,14 +72,14 @@ const HomePage: React.FC = () => {
           ))}
         </div>
       </div>
-      <h1 style={{textAlign: 'center'}}>رویدادهای جدید</h1>
+      <h1 className="font-bold" style={{textAlign: 'center'}}>رویدادهای جدید</h1>
       <div style={{display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(373px, 1fr))', gap: 32, margin: '32px 0'}}>
         <EventCard />
         <EventCard />
         <EventCard />
         <EventCard />
       </div>
-      <h2 style={{textAlign: 'center'}}>فروردین</h2>
+      <h2 className="font-medium" style={{textAlign: 'center'}}>فروردین</h2>
       <div style={{display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(373px, 1fr))', gap: 32, margin: '32px 0'}}>
         <EventCard />
         <EventCard />
