@@ -1,7 +1,6 @@
 import React, { useRef, useEffect } from 'react';
 import EventCard from '../components/EventCard';
 import StoryCard from '../components/StoryCard';
-import '../styles/globals.css';
 
 const NUM_STORY_CARDS = 10;
 
