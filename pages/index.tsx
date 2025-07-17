@@ -62,7 +62,7 @@ const HomePage: React.FC = () => {
   }, []);
 
   return (
-    <div style={{padding: 32}}>
+    <div style={{padding: '32px 0'}}>
       {/* Horizontal scrollable StoryCards, scroll starts from center and auto-scrolls smoothly */}
       <div ref={scrollRef} style={{width: '100%', overflowX: 'auto', marginBottom: 32, direction: 'ltr'}}>
         <div style={{display: 'flex', flexDirection: 'row', gap: 16, minWidth: NUM_STORY_CARDS * 320.6 + (NUM_STORY_CARDS - 1) * 16, paddingBottom: 8}}>
@@ -71,15 +71,56 @@ const HomePage: React.FC = () => {
           ))}
         </div>
       </div>
-      <h1 className="font-bold" style={{textAlign: 'center'}}>رویدادهای جدید</h1>
-      <div style={{display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(373px, 1fr))', gap: 32, margin: '32px 0'}}>
+      <div style={{display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 16, marginBottom: 0}}>
+        <svg width="32" height="32" style={{flexShrink: 0}} viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="16" cy="16" r="16" fill="#D9D9D9" />
+        </svg>
+        <h1 className="font-bold" style={{textAlign: 'center', margin: 0}}>رویدادهای جدید</h1>
+        <svg width="32" height="32" style={{flexShrink: 0}} viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="16" cy="16" r="16" fill="#D9D9D9" />
+        </svg>
+      </div>
+      <div
+        style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(373px, 1fr))',
+          gap: 32,
+          margin: '32px auto',
+          maxWidth: (4 * 373) + (3 * 32), // برای ۴ کارت
+          width: '100%',
+          justifyContent: 'center',
+          justifyItems: 'center',
+          direction: 'ltr',
+        }}
+      >
         <EventCard />
         <EventCard />
         <EventCard />
         <EventCard />
       </div>
-      <h2 className="font-medium" style={{textAlign: 'center'}}>فروردین</h2>
-      <div style={{display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(373px, 1fr))', gap: 32, margin: '32px 0'}}>
+      {/* فروردین تیتر و دایره‌ها */}
+      <div style={{display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 16, marginBottom: 0}}>
+        <svg width="32" height="32" style={{flexShrink: 0}} viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="16" cy="16" r="16" fill="#D9D9D9" />
+        </svg>
+        <h2 className="font-medium" style={{textAlign: 'center', margin: 0}}>فروردین</h2>
+        <svg width="32" height="32" style={{flexShrink: 0}} viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="16" cy="16" r="16" fill="#D9D9D9" />
+        </svg>
+      </div>
+      <div
+        style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(373px, 1fr))',
+          gap: 32,
+          margin: '32px auto',
+          maxWidth: (6 * 373) + (5 * 32), // برای ۶ کارت
+          width: '100%',
+          justifyContent: 'center',
+          justifyItems: 'center',
+          direction: 'ltr',
+        }}
+      >
         <EventCard />
         <EventCard />
         <EventCard />
