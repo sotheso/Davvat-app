@@ -3,6 +3,7 @@ import EventCard from '../components/EventCard';
 import StoryCard from '../components/StoryCard';
 
 const NUM_STORY_CARDS = 10;
+const STORY_GAP = 32;
 
 const HomePage: React.FC = () => {
   const scrollRef = useRef<HTMLDivElement>(null);
@@ -10,7 +11,7 @@ const HomePage: React.FC = () => {
   useEffect(() => {
     if (scrollRef.current) {
       const cardWidth = 320.6;
-      const gap = 16;
+      const gap = STORY_GAP;
       const visibleCards = 4;
       // مجموع عرض همه کارت‌ها و فاصله‌ها
       const totalWidth = NUM_STORY_CARDS * cardWidth + (NUM_STORY_CARDS - 1) * gap;
@@ -43,7 +44,7 @@ const HomePage: React.FC = () => {
     const interval = setInterval(() => {
       if (scrollRef.current) {
         const cardWidth = 320.6;
-        const gap = 16;
+        const gap = STORY_GAP;
         const visibleCards = 4;
         const totalWidth = NUM_STORY_CARDS * cardWidth + (NUM_STORY_CARDS - 1) * gap;
         const containerWidth = scrollRef.current.offsetWidth;
@@ -62,16 +63,16 @@ const HomePage: React.FC = () => {
   }, []);
 
   return (
-    <div style={{padding: '32px 0'}}>
+    <div>
       {/* Horizontal scrollable StoryCards, scroll starts from center and auto-scrolls smoothly */}
       <div ref={scrollRef} style={{width: '100%', overflowX: 'auto', marginBottom: 32, direction: 'ltr'}}>
-        <div style={{display: 'flex', flexDirection: 'row', gap: 16, minWidth: NUM_STORY_CARDS * 320.6 + (NUM_STORY_CARDS - 1) * 16, paddingBottom: 8}}>
+        <div style={{display: 'flex', flexDirection: 'row', gap: STORY_GAP, minWidth: NUM_STORY_CARDS * 320.6 + (NUM_STORY_CARDS - 1) * STORY_GAP, paddingBottom: 8}}>
           {Array.from({ length: NUM_STORY_CARDS }).map((_, i) => (
             <StoryCard key={i} />
           ))}
         </div>
       </div>
-      <div style={{display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 16, marginBottom: 0}}>
+      <div style={{display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 16, marginTop: 62}}>
         <svg width="32" height="32" style={{flexShrink: 0}} viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
           <circle cx="16" cy="16" r="16" fill="#D9D9D9" />
         </svg>
@@ -84,9 +85,10 @@ const HomePage: React.FC = () => {
         style={{
           display: 'grid',
           gridTemplateColumns: 'repeat(auto-fit, minmax(373px, 1fr))',
-          gap: 32,
+          columnGap: -100, // فاصله افقی کم
+          rowGap: 32,    // فاصله عمودی فعلی
           margin: '32px auto',
-          maxWidth: (4 * 373) + (3 * 32), // برای ۴ کارت
+          maxWidth: (4 * 373) + (3 * 12), // برای ۴ کارت
           width: '100%',
           justifyContent: 'center',
           justifyItems: 'center',
@@ -112,9 +114,10 @@ const HomePage: React.FC = () => {
         style={{
           display: 'grid',
           gridTemplateColumns: 'repeat(auto-fit, minmax(373px, 1fr))',
-          gap: 32,
+          columnGap: 0, // فاصله افقی کم
+          rowGap: 32,    // فاصله عمودی فعلی
           margin: '32px auto',
-          maxWidth: (6 * 373) + (5 * 32), // برای ۶ کارت
+          maxWidth: (6 * 373) + (5 * 12), // برای ۶ کارت
           width: '100%',
           justifyContent: 'center',
           justifyItems: 'center',

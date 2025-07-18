@@ -2,7 +2,7 @@ import React from 'react';
 
 const EventCard: React.FC = () => {
   return (
-    <div className="event-card" style={{position: 'relative', display: 'flex', flexDirection: 'row-reverse', alignItems: 'stretch', background: '#f5f5f5', borderRadius: 16, padding: 8, width: 373, height: 181.46, gap: 20, boxSizing: 'border-box', overflow: 'hidden'}}>
+    <div className="event-card" style={{position: 'relative', display: 'flex', flexDirection: 'row-reverse', alignItems: 'stretch', background: '#f5f5f5', borderRadius: 16, padding: 8, width: 373, height: 181.46, gap: 8, boxSizing: 'border-box', overflow: 'hidden'}}>
       {/* Right column: Banner and Date */}
       <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'flex-start', height: '100%', minWidth: 120}}>
         {/* Banner with icon placeholder */}
