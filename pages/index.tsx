@@ -3,7 +3,7 @@ import EventCard from '../components/EventCard';
 import StoryCard from '../components/StoryCard';
 import TopBar from '../components/TopBar';
 
-const NUM_STORY_CARDS = 10;
+const NUM_STORY_CARDS = 11;
 const STORY_GAP = 32;
 
 const HomePage: React.FC = () => {
