@@ -37,7 +37,7 @@ const StoryCard: React.FC = () => {
           position: 'absolute',
           left: 0,
           right: 0,
-          top: '65%',
+          top: '70%',
           transform: 'translateY(-50%)',
           display: 'flex',
           flexDirection: 'column',
