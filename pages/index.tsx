@@ -1,6 +1,7 @@
 import React, { useRef, useEffect } from 'react';
 import EventCard from '../components/EventCard';
 import StoryCard from '../components/StoryCard';
+import TopBar from '../components/TopBar';
 
 const NUM_STORY_CARDS = 10;
 const STORY_GAP = 32;
@@ -64,6 +65,8 @@ const HomePage: React.FC = () => {
 
   return (
     <div>
+      <TopBar />
+      <div style={{ height: 60 }} />
       {/* Horizontal scrollable StoryCards, scroll starts from center and auto-scrolls smoothly */}
       <div ref={scrollRef} style={{width: '100%', overflowX: 'auto', marginBottom: 32, direction: 'ltr'}}>
         <div style={{display: 'flex', flexDirection: 'row', gap: STORY_GAP, minWidth: NUM_STORY_CARDS * 320.6 + (NUM_STORY_CARDS - 1) * STORY_GAP, paddingBottom: 8}}>
