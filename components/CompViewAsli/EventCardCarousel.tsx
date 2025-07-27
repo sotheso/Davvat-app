@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import EventCard from './EventCard';
+import EventCard from './CompViewAsli/EventCard';
 
 const EventCardCarousel: React.FC = () => {
   const [currentIndex, setCurrentIndex] = useState(0); // Start from first set

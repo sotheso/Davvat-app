@@ -1,8 +1,8 @@
 import React, { useRef, useEffect } from 'react';
-import EventCard from '../components/EventCard';
-import TopBar from '../components/TopBar';
-import EventCardCarousel from '../components/EventCardCarousel';
-import BannerCard from '../components/BannerCard';
+import EventCard from '../components/CompViewAsli/EventCard';
+import TopBar from '../components/CompViewAsli/TopBar';
+import EventCardCarousel from '../components/CompViewAsli/EventCardCarousel';
+import BannerCard from '../components/ButtonCard/BannerCard';
 
 const HomePage: React.FC = () => {
   return (
