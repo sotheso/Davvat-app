@@ -1,8 +1,24 @@
 import React from 'react';
+import BazaarcheButton from './BazaarcheButton';
 
 const EventCard: React.FC = () => {
   return (
-    <div className="event-card" style={{position: 'relative', display: 'flex', flexDirection: 'row-reverse', alignItems: 'stretch', background: '#f5f5f5', borderRadius: 16, padding: 8, width: 373, height: 181.46, gap: 8, boxSizing: 'border-box', overflow: 'hidden'}}>
+    <div className="event-card" style={{
+      position: 'relative', 
+      display: 'flex', 
+      flexDirection: 'row-reverse', 
+      alignItems: 'stretch', 
+      width: 349.444, 
+      height: 170, 
+      flexShrink: 0,
+      borderRadius: 24,
+      border: '1px solid #EDEDED',
+      background: '#FCFCFC',
+      padding: 8, 
+      gap: 8, 
+      boxSizing: 'border-box', 
+      overflow: 'hidden'
+    }}>
       {/* Right column: Banner and Date */}
       <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'flex-start', height: '100%', minWidth: 120}}>
         {/* Banner with icon placeholder */}
@@ -35,7 +51,7 @@ const EventCard: React.FC = () => {
         {/* Bottom row: bazarche, stars */}
         <div style={{display: 'flex', flexDirection: 'column', alignItems: 'flex-end'}}>
           <div>
-            <button style={{background: '#F2C1AE', color: '#F26430', border: 'none', borderRadius: 12, padding: '2px 16px', fontWeight: 'bold', fontSize: 10, boxShadow: '0 1px 4px #eee', marginTop: 6, marginBottom: 8}}>بازارچه</button>
+            <BazaarcheButton>بازارچه</BazaarcheButton>
           </div>
           <div style={{marginTop: 2, marginBottom: 16}}>
             <div style={{display: 'flex', alignItems: 'center', gap: 8, flexDirection: 'row-reverse', justifyContent: 'flex-start'}}>
