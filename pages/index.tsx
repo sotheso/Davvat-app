@@ -2,6 +2,7 @@ import React, { useRef, useEffect } from 'react';
 import EventCard from '../components/EventCard';
 import StoryCard from '../components/StoryCard';
 import TopBar from '../components/TopBar';
+import EventCardCarousel from '../components/EventCardCarousel';
 
 const NUM_STORY_CARDS = 11;
 const STORY_GAP = 32;
@@ -64,8 +65,12 @@ const HomePage: React.FC = () => {
   }, []);
 
   return (
-    <div>
+    <div style={{ paddingLeft: '94px', paddingRight: '94px' }}>
       <TopBar />
+      
+      {/* Event Card Carousel - New Position */}
+      <EventCardCarousel />
+      
       <div style={{ height: 60 }} />
       {/* Horizontal scrollable StoryCards, scroll starts from center and auto-scrolls smoothly */}
       <div ref={scrollRef} style={{width: '100%', overflowX: 'auto', marginBottom: 32, direction: 'ltr'}}>
@@ -79,7 +84,7 @@ const HomePage: React.FC = () => {
         <svg width="32" height="32" style={{flexShrink: 0}} viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
           <circle cx="16" cy="16" r="16" fill="#D9D9D9" />
         </svg>
-        <h1 className="font-bold" style={{textAlign: 'center', margin: 0}}>رویدادهای جدید</h1>
+        <h1 className="font-bold" style={{textAlign: 'center', margin: 0}}>همه جاهایی که دعوتی:</h1>
         <svg width="32" height="32" style={{flexShrink: 0}} viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
           <circle cx="16" cy="16" r="16" fill="#D9D9D9" />
         </svg>
