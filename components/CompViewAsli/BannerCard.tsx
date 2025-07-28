@@ -1,33 +1,11 @@
 import React from 'react';
-import BazaarcheButton from './BazaarcheButton';
-import DateButton from './DateButton';
-import BannerParagraph from '../CompText/BannerTopView/BannerParagraph';
-import BannerTitle from '../CompText/BannerTopView/BannerTitle';
+import BazaarcheButton from '../CompViewDetails/ButtonCard/BazaarcheButton';
+import DateButton from '../CompViewDetails/ButtonCard/DateButton';
+import SectionTitle from '../CompViewDetails/Text/SectionTitle';
 
 const BannerCard: React.FC = () => {
   return (
     <div style={{ marginBottom: 32 }}>
-      {/* Main title outside the card */}
-      <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
-        <h1 style={{
-          display: 'flex',
-          width: 275,
-          height: 35,
-          flexDirection: 'column',
-          justifyContent: 'center',
-          flexShrink: 0,
-          color: '#000',
-          textAlign: 'right',
-          fontFamily: 'Ravi, sans-serif',
-          fontSize: 24,
-          fontStyle: 'normal',
-          fontWeight: 700,
-          lineHeight: 'normal',
-          margin: '0 0 16px 0'
-        }}>
-          !اگه قرار باشه فقط یه جا بری
-        </h1>
-      </div>
       
       {/* Main banner card */}
       <div style={{
@@ -103,4 +81,62 @@ const BannerCard: React.FC = () => {
   );
 };
 
+
+// BannerTitle component
+const BannerTitle: React.FC<React.HTMLAttributes<HTMLDivElement>> = ({ children, ...props }) => (
+  <div
+    style={{
+      display: 'flex',
+      width: 'auto',
+      height: 26,
+      flexDirection: 'column',
+      justifyContent: 'center',
+      flexShrink: 0,
+      alignItems: 'flex-start',
+    }}
+    {...props}
+  >
+    <div
+      style={{
+        width: 'auto',
+        height: '100%',
+        textAlign: 'right',
+        justifyContent: 'center',
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'flex-start',
+        color: 'black',
+        fontSize: 24,
+        fontFamily: 'Ravi',
+        fontWeight: 700,
+        wordWrap: 'break-word',
+      }}
+    >
+      {children}
+    </div>
+  </div>
+);
+
+// BannerParagraph component
+const BannerParagraph: React.FC<React.HTMLAttributes<HTMLDivElement>> = ({ children, ...props }) => (
+  <div
+    style={{
+      width: 'auto',
+      height: 114,
+      flexShrink: 0,
+      color: '#000',
+      textAlign: 'right',
+      fontFamily: 'Ravi',
+      fontSize: 16,
+      fontStyle: 'normal',
+      fontWeight: 400,
+      lineHeight: '35px',
+      display: 'flex',
+      alignItems: 'flex-start',
+    }}
+    {...props}
+  >
+    {children}
+  </div>
+);
 export default BannerCard; 

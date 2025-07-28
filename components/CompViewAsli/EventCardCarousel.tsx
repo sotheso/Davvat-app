@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import EventCard from './CompViewAsli/EventCard';
+import EventCard from '../CompViewAsli/EventCard';
+import SectionTitle from '../CompViewDetails/Text/SectionTitle';
 
 const EventCardCarousel: React.FC = () => {
   const [currentIndex, setCurrentIndex] = useState(0); // Start from first set
@@ -41,23 +42,6 @@ const EventCardCarousel: React.FC = () => {
       margin: '32px 0',
       width: '100%'
     }}>
-      {/* Title */}
-      <div style={{
-        width: '100%',
-        height: '100%',
-        textAlign: 'right',
-        justifyContent: 'center',
-        display: 'flex',
-        flexDirection: 'column',
-        color: 'black',
-        fontSize: 24,
-        fontFamily: 'Ravi',
-        fontWeight: '700',
-        wordWrap: 'break-word',
-        marginBottom: 16
-      }}>
-        :بهترین هایی که دعوتی
-      </div>
 
       {/* Cards Container - Show exactly 3 cards */}
       <div style={{

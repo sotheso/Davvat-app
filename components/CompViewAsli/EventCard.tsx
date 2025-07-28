@@ -1,6 +1,6 @@
 import React from 'react';
-import BazaarcheButton from '../ButtonCard/BazaarcheButton';
-import RoundIconButton from '../ButtonCard/RoundIconButton';
+import BazaarcheButton from '../CompViewDetails/ButtonCard/BazaarcheButton';
+import RoundIconButton from '../CompViewDetails/ButtonCard/RoundIconButton';
 
 const EventCard: React.FC = () => {
   return (
@@ -46,9 +46,9 @@ const EventCard: React.FC = () => {
       {/* Left column: Title, description, bottom row */}
       <div style={{flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'space-between', height: '100%'}}>
         {/* Title at the top */}
-        <h3 style={{fontWeight: 700, fontSize: 16, margin: 0, textAlign: 'right', marginBottom: 8}}>ایونت بساط</h3>
+        <EventTitle />
         {/* Description */}
-        <p style={{margin: 0, textAlign: 'right', fontSize: 12, color: '#444', marginBottom: 36}}>وقتی شب و بساط و وافور با منقل ترکیب بشن، اون شب به شب فراموش شدنیه!</p>
+        <EventDescription />
         {/* Bottom row: bazarche, stars */}
         <div style={{display: 'flex', flexDirection: 'column', alignItems: 'flex-end'}}>
           <div>
@@ -75,5 +75,19 @@ const EventCard: React.FC = () => {
     </div>
   );
 };
+
+// Description component
+const EventDescription: React.FC = () => (
+  <p style={{margin: 0, textAlign: 'right', fontSize: 12, color: '#444', marginBottom: 36}}>
+    وقتی شب و بساط و وافور با منقل ترکیب بشن، اون شب یه شب فراموش شدنیه!
+  </p>
+);
+
+// Title component
+const EventTitle: React.FC = () => (
+  <h3 style={{fontWeight: 700, fontSize: 16, margin: 0, textAlign: 'right', marginBottom: 8}}>
+    ایونت بساط
+  </h3>
+);
 
 export default EventCard; 
