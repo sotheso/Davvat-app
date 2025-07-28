@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import EventCard from './EventCard';
 import SectionTitle from '../CompViewDetails/Text/SectionTitle';
+import { useCarousel } from '../../Functions/useCarousel';
 
 const EventCardCarousel: React.FC = () => {
-  const [currentIndex, setCurrentIndex] = useState(0); // Start from first card
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
@@ -25,17 +25,7 @@ const EventCardCarousel: React.FC = () => {
   const visibleCardsWidth = (cardWidth * cardsPerView) + (cardGap * (cardsPerView - 1)) - (2 * sidePeek);
   const maxIndex = cards.length - cardsPerView;
 
-  const goToPrevious = () => {
-    if (currentIndex > 0) {
-      setCurrentIndex(currentIndex - 1);
-    }
-  };
-
-  const goToNext = () => {
-    if (currentIndex < maxIndex) {
-      setCurrentIndex(currentIndex + 1);
-    }
-  };
+  const { currentIndex, goToPrevious, goToNext, setCurrentIndex } = useCarousel(maxIndex, 3500);
 
   // Check if buttons should be disabled
   const isPreviousDisabled = currentIndex === 0;

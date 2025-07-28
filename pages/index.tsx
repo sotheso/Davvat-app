@@ -21,6 +21,8 @@ const HomePage: React.FC = () => {
       
       <TopBar />
 
+      <div style={{ height: 64 }} />
+
 
       {/* Banner Card - New Position */}
       <SectionTitle>!اگه قرار باشه فقط یه جا بری</SectionTitle>
