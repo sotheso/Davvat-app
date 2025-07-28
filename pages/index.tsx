@@ -31,7 +31,16 @@ const HomePage: React.FC = () => {
 
       {/* Event Card Carousel - New Position */}
       <SectionTitle>:بهترین هایی که دعوتی</SectionTitle>
-      <EventCardCarousel />
+      <div style={{
+        position: 'relative',
+        left: '-94px',
+        width: 'calc(100% + 188px)',
+        paddingLeft: '10px',
+        paddingRight: '10px',
+        boxSizing: 'border-box'
+      }}>
+        <EventCardCarousel />
+      </div>
 
 
       <div style={{ height: 60 }} />
