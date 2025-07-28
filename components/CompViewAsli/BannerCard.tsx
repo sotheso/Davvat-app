@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
+import { useRouter } from 'next/router';
 import BazaarcheButton from '../CompViewDetails/ButtonCard/BazaarcheButton';
 import DateButton from '../CompViewDetails/ButtonCard/DateButton';
 import SectionTitle from '../CompViewDetails/Text/SectionTitle';
 
 const BannerCard: React.FC = () => {
+  const router = useRouter();
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
@@ -16,7 +18,7 @@ const BannerCard: React.FC = () => {
   }, []);
 
   return (
-    <div style={{ marginBottom: 32 }}>
+    <div style={{ marginBottom: 32, cursor: 'pointer' }} onClick={() => router.push('/details')}>
       {/* Main banner card */}
       <div
         style={{
