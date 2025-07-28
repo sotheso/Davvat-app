@@ -7,10 +7,10 @@ interface DateButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> 
 const DateButton: React.FC<DateButtonProps> = ({ children, ...props }) => (
   <button
     style={{
-      width: 122.778,
-      height: 28.333,
+      width: '122.778px',
+      height: '28.333px',
       flexShrink: 0,
-      borderRadius: 27,
+      borderRadius: '27px',
       background: '#F3F3F3',
       border: 'none',
       display: 'flex',
@@ -23,15 +23,15 @@ const DateButton: React.FC<DateButtonProps> = ({ children, ...props }) => (
     <span
       style={{
         display: 'flex',
-        width: 106.25,
-        height: 18.889,
+        width: '106.25px',
+        height: '18.889px',
         flexDirection: 'column',
         justifyContent: 'center',
         flexShrink: 0,
         color: '#000',
         textAlign: 'center',
         fontFamily: 'Ravi',
-        fontSize: 10,
+        fontSize: '10px',
         fontStyle: 'normal',
         fontWeight: 500,
         lineHeight: 'normal',

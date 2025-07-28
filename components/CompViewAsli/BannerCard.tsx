@@ -1,72 +1,106 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import BazaarcheButton from '../CompViewDetails/ButtonCard/BazaarcheButton';
 import DateButton from '../CompViewDetails/ButtonCard/DateButton';
 import SectionTitle from '../CompViewDetails/Text/SectionTitle';
 
 const BannerCard: React.FC = () => {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 900);
+    };
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
   return (
     <div style={{ marginBottom: 32 }}>
-      
       {/* Main banner card */}
-      <div style={{
-        width: 1104,
-        height: 240,
-        flexShrink: 0,
-        borderRadius: 40,
-        border: '1px solid #EDEDED',
-        background: '#FCFCFC',
-        display: 'flex',
-        gap: 16,
-        alignItems: 'center',
-        position: 'relative'
-      }}>
-        {/* Left section - Empty for spacing */}
-        <div style={{ flex: 1 }} />
-        {/* Right section - Orange block */}
-        <div style={{
-          width: 370,
-          height: 200,
-          flexShrink: 0,
-          borderRadius: 24,
-          background: '#F26430',
-          margin: 16
-        }} />
-        {/* Button row absolutely positioned at bottom left of orange block */}
-        <div style={{
-          position: 'absolute',
-          right: 400 + 20, // orange block margin right + desired padding from orange block
-          bottom: 16, // orange block margin bottom
+      <div
+        style={{
+          width: '100%',
+          maxWidth: 1104,
+          minHeight: isMobile ? 400 : 240,
+          height: 'auto',
+          borderRadius: 40,
+          border: '1px solid #EDEDED',
+          background: '#FCFCFC',
           display: 'flex',
-          flexDirection: 'row',
-          alignItems: 'center',
-          gap: 8
-        }}>
+          flexDirection: isMobile ? 'column' : 'row',
+          gap: 16,
+          alignItems: isMobile ? 'stretch' : 'center',
+          position: 'relative',
+          padding: isMobile ? 16 : 0,
+          boxSizing: 'border-box',
+        }}
+      >
+        {/* Left section - Empty for spacing */}
+        {!isMobile && <div style={{ flex: 1, minWidth: 0 }} />}
+        {/* Right section - Orange block */}
+        <div
+          style={{
+            width: isMobile ? '100%' : '33%',
+            minWidth: isMobile ? 0 : 200,
+            maxWidth: isMobile ? '100%' : 370,
+            height: isMobile ? 120 : 200,
+            flexShrink: 0,
+            borderRadius: 24,
+            background: '#F26430',
+            margin: isMobile ? '0 auto 16px auto' : 16,
+          }}
+        />
+        {/* Button row absolutely positioned at bottom left of orange block */}
+        <div
+          style={{
+            position: isMobile ? 'static' : 'absolute',
+            right: isMobile ? 'auto' : '36%',
+            bottom: isMobile ? 'auto' : 16,
+            display: 'flex',
+            flexDirection: 'row',
+            alignItems: 'center',
+            gap: 8,
+            marginTop: isMobile ? 16 : 0,
+            justifyContent: isMobile ? 'center' : 'flex-start',
+          }}
+        >
           <BazaarcheButton>دانش</BazaarcheButton>
           <BazaarcheButton>موزیک</BazaarcheButton>
           <BazaarcheButton>بازارچه</BazaarcheButton>
-          <DateButton>پنجشنبه، ۲۴ فروردین</DateButton>
+          <div style={{ marginRight: isMobile ? 0 : 32 }}>
+            <DateButton>پنجشنبه، ۲۴ فروردین</DateButton>
+          </div>
         </div>
         {/* Orange circle absolutely positioned in bottom left */}
-        <div style={{
-          position: 'absolute',
-          left: 16,
-          bottom: 16,
-          width: 24,
-          height: 24,
-          background: '#F26430',
-          borderRadius: '50%'
-        }} />
+        {!isMobile && (
+          <div
+            style={{
+              position: 'absolute',
+              left: 16,
+              bottom: 16,
+              width: 24,
+              height: 24,
+              background: '#F26430',
+              borderRadius: '50%',
+            }}
+          />
+        )}
         {/* Centered description text with spacing from the orange block */}
         <div
           style={{
-            position: 'absolute',
-            right: 370 + 32 + 24, // orange block width + gap + extra padding from orange block + extra padding from right edge
-            top: '45%',
-            transform: 'translateY(-50%)',
-            width: 637,
+            position: isMobile ? 'static' : 'absolute',
+            right: isMobile ? 'auto' : '40%',
+            top: isMobile ? 'auto' : '50%',
+            transform: isMobile ? 'none' : 'translateY(-50%)',
+            width: isMobile ? '100%' : '58%',
+            minWidth: 200,
+            maxWidth: 637,
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'flex-end',
+            margin: isMobile ? '0 auto' : 0,
+            marginTop: isMobile ? 16 : 0,
           }}
         >
           <BannerTitle style={{ marginBottom: 8 }}>
@@ -87,8 +121,8 @@ const BannerTitle: React.FC<React.HTMLAttributes<HTMLDivElement>> = ({ children,
   <div
     style={{
       display: 'flex',
-      width: 'auto',
-      height: 26,
+      width: '100%',
+      minHeight: 26,
       flexDirection: 'column',
       justifyContent: 'center',
       flexShrink: 0,
@@ -98,15 +132,14 @@ const BannerTitle: React.FC<React.HTMLAttributes<HTMLDivElement>> = ({ children,
   >
     <div
       style={{
-        width: 'auto',
-        height: '100%',
+        width: '100%',
         textAlign: 'right',
         justifyContent: 'center',
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'flex-start',
         color: 'black',
-        fontSize: 24,
+        fontSize: 'clamp(16px, 2vw, 24px)',
         fontFamily: 'Ravi',
         fontWeight: 700,
         wordWrap: 'break-word',
@@ -121,16 +154,16 @@ const BannerTitle: React.FC<React.HTMLAttributes<HTMLDivElement>> = ({ children,
 const BannerParagraph: React.FC<React.HTMLAttributes<HTMLDivElement>> = ({ children, ...props }) => (
   <div
     style={{
-      width: 'auto',
-      height: 114,
+      width: '100%',
+      minHeight: 40,
       flexShrink: 0,
       color: '#000',
       textAlign: 'right',
       fontFamily: 'Ravi',
-      fontSize: 16,
+      fontSize: 'clamp(12px, 1.3vw, 16px)',
       fontStyle: 'normal',
       fontWeight: 400,
-      lineHeight: '35px',
+      lineHeight: 'clamp(22px, 2.2vw, 35px)',
       display: 'flex',
       alignItems: 'flex-start',
     }}

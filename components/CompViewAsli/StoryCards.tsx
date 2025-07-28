@@ -1,16 +1,29 @@
-import React, { useState } from 'react';
-import EventCard from '../CompViewAsli/EventCard';
+import React, { useState, useEffect } from 'react';
+import EventCard from './EventCard';
 import SectionTitle from '../CompViewDetails/Text/SectionTitle';
 
 const EventCardCarousel: React.FC = () => {
-  const [currentIndex, setCurrentIndex] = useState(0); // Start from first set
-  
-  // 9 total cards in 3 sets of 3
-  const cardSets = [
-    [1, 2, 3], // First set
-    [4, 5, 6], // Second set
-    [7, 8, 9], // Third set
-  ];
+  const [currentIndex, setCurrentIndex] = useState(0); // Start from first card
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 900);
+    };
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  // 9 total cards
+  const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+  const cardWidth = 350.462;
+  const cardGap = 16;
+  // Desktop: 3 at a time, Mobile: 1 at a time
+  const cardsPerView = isMobile ? 1 : 3;
+  const sidePeek = isMobile ? 30 : 60; // مقدار دیده شدن کارت بعدی/قبلی
+  const visibleCardsWidth = (cardWidth * cardsPerView) + (cardGap * (cardsPerView - 1)) - (2 * sidePeek);
+  const maxIndex = cards.length - cardsPerView;
 
   const goToPrevious = () => {
     if (currentIndex > 0) {
@@ -19,19 +32,14 @@ const EventCardCarousel: React.FC = () => {
   };
 
   const goToNext = () => {
-    if (currentIndex < cardSets.length - 1) {
+    if (currentIndex < maxIndex) {
       setCurrentIndex(currentIndex + 1);
     }
   };
 
-  // Calculate the width for exactly 3 cards
-  const cardWidth = 350.462;
-  const cardGap = 16;
-  const threeCardsWidth = (cardWidth * 3) + (cardGap * 2); // 3 cards + 2 gaps
-
   // Check if buttons should be disabled
   const isPreviousDisabled = currentIndex === 0;
-  const isNextDisabled = currentIndex === cardSets.length - 1;
+  const isNextDisabled = currentIndex === maxIndex;
 
   return (
     <div style={{ 
@@ -42,67 +50,66 @@ const EventCardCarousel: React.FC = () => {
       margin: '32px 0',
       width: '100%'
     }}>
-
-      {/* Cards Container - Show exactly 3 cards */}
+      {/* Cards Container - Show visible cards */}
       <div style={{
         display: 'flex',
         justifyContent: 'flex-start',
         alignItems: 'center',
         minHeight: '620.953px',
-        overflow: 'hidden',
+        overflow: 'visible',
         position: 'relative',
-        width: `${threeCardsWidth}px`,
-        maxWidth: `${threeCardsWidth}px`,
-        minWidth: `${threeCardsWidth}px`
+        width: `${visibleCardsWidth}px`,
+        maxWidth: `${visibleCardsWidth}px`,
+        minWidth: `${visibleCardsWidth}px`,
+        paddingLeft: `${sidePeek}px`,
+        paddingRight: `${sidePeek}px`,
       }}>
         <div 
           style={{
             display: 'flex',
             gap: `${cardGap}px`,
-            transform: `translateX(-${currentIndex * threeCardsWidth}px)`,
+            transform: `translateX(-${currentIndex * (cardWidth + cardGap)}px)` ,
             transition: 'transform 0.5s ease-in-out',
-            width: `${cardSets.length * threeCardsWidth}px`,
-            flexShrink: 0
+            width: `${cards.length * (cardWidth + cardGap)}px`,
+            flexShrink: 0,
+            overflow: 'visible',
           }}
         >
-          {cardSets.flatMap((set, setIndex) => 
-            set.map((cardId) => (
-              <div 
-                key={`${setIndex}-${cardId}`} 
-                style={{
-                  width: `${cardWidth}px`,
-                  height: '620.953px',
-                  background: '#F26430',
-                  borderRadius: '24px',
-                  position: 'relative',
-                  flexShrink: 0,
-                  transform: 'scale(1)',
-                  transition: 'transform 0.2s ease'
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.transform = 'scale(1.02)';
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.transform = 'scale(1)';
-                }}
-              >
-                {/* Gray circle in bottom-left corner */}
-                <div style={{
-                  width: '40px',
-                  height: '40px',
-                  background: '#F3F4F6',
-                  borderRadius: '9999px',
-                  flexShrink: 0,
-                  position: 'absolute',
-                  bottom: '16px',
-                  left: '16px'
-                }} />
-              </div>
-            ))
-          )}
+          {cards.map((cardId, idx) => (
+            <div 
+              key={cardId} 
+              style={{
+                width: `${cardWidth}px`,
+                height: '620.953px',
+                background: '#F26430',
+                borderRadius: '24px',
+                position: 'relative',
+                flexShrink: 0,
+                transform: 'scale(1)',
+                transition: 'transform 0.2s ease'
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.transform = 'scale(1.02)';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.transform = 'scale(1)';
+              }}
+            >
+              {/* Gray circle in bottom-left corner */}
+              <div style={{
+                width: '40px',
+                height: '40px',
+                background: '#F3F4F6',
+                borderRadius: '9999px',
+                flexShrink: 0,
+                position: 'absolute',
+                bottom: '16px',
+                left: '16px'
+              }} />
+            </div>
+          ))}
         </div>
       </div>
-
       {/* Navigation Buttons - Below Cards */}
       <div style={{
         display: 'flex',
@@ -148,7 +155,6 @@ const EventCardCarousel: React.FC = () => {
             <path d="M15 18L9 12L15 6" stroke={isPreviousDisabled ? "#999" : "#666"} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
           </svg>
         </button>
-
         {/* Right Arrow */}
         <button
           onClick={goToNext}

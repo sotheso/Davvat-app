@@ -1,7 +1,7 @@
 import React, { useRef, useEffect, useState } from 'react';
 import EventCard from '../components/CompViewAsli/EventCard';
 import TopBar from '../components/CompViewAsli/TopBar';
-import EventCardCarousel from '../components/CompViewAsli/EventCardCarousel';
+import EventCardCarousel from '../components/CompViewAsli/StoryCards';
 import BannerCard from '../components/CompViewAsli/BannerCard';
 import SectionTitle from '../components/CompViewDetails/Text/SectionTitle';
 import FilterButton from '../components/CompViewDetails/ButtonCard/FilterButton';
