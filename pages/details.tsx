@@ -1,18 +1,20 @@
 import React from 'react';
-
+import TopBar from '../components/CompViewAsli/TopBar';
+import DetailsImage from '../components/CompViewDetails/DetailsImage';
 
 const DetailsPage: React.FC = () => {
   return (
-    <div style={{ background: '#F8F8F8', minHeight: '100vh', padding: '32px 0' }}>
-      <div style={{ maxWidth: 1100, margin: '0 auto', background: '#fff', borderRadius: 16, padding: 32 }}>
-        {/* Header */}
-        <div style={{ textAlign: 'center', fontWeight: 700, fontSize: 32, marginBottom: 32 }}>
-          لوگوی دعوت
-        </div>
+
+    <div style={{ paddingLeft: '94px', paddingRight: '94px' }}>
+        <TopBar />
+        <div style={{ height: 64 }} />
+
+
+
         {/* Main content */}
         <div style={{ display: 'flex', flexDirection: 'row-reverse', gap: 32, alignItems: 'flex-start', justifyContent: 'center' }}>
           {/* Banner box */}
-          <div style={{ minWidth: 320, minHeight: 320, background: '#F26430', borderRadius: 32, flex: '0 0 340px', height: 340 }} />
+          <DetailsImage />
           {/* Info section */}
           <div style={{ flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'flex-end' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: 16, marginBottom: 8 }}>
@@ -51,7 +53,6 @@ const DetailsPage: React.FC = () => {
           <span style={{ width: 12, height: 12, background: '#F26430', borderRadius: '50%', display: 'inline-block' }} />
         </div>
       </div>
-    </div>
   );
 };
 

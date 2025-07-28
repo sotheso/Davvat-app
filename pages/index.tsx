@@ -3,8 +3,8 @@ import EventCard from '../components/CompViewAsli/EventCard';
 import TopBar from '../components/CompViewAsli/TopBar';
 import EventCardCarousel from '../components/CompViewAsli/StoryCards';
 import BannerCard from '../components/CompViewAsli/TopBanner';
-import SectionTitle from '../components/CompViewDetails/Text/SectionTitle';
-import FilterButton from '../components/CompViewDetails/ButtonCard/FilterButton';
+import SectionTitle from '../components/CompViewAsli/CompDetails/Text/SectionTitle';
+import FilterButton from '../components/CompViewAsli/CompDetails/ButtonCard/FilterButton';
 import BottomImage from '../components/CompViewAsli/BottomImage';
 
 const filterOptions = [
@@ -18,6 +18,14 @@ const HomePage: React.FC = () => {
 
   return (
     <div style={{ paddingLeft: '94px', paddingRight: '94px' }}>
+      <style jsx>{`
+        @media (max-width: 700px) {
+          div[style*='padding-left: 94px'] {
+            padding-left: 54px !important;
+            padding-right: 54px !important;
+          }
+        }
+      `}</style>
       
       
       <TopBar />
@@ -51,7 +59,10 @@ const HomePage: React.FC = () => {
 
 
       {/* Filter Buttons */}
-      <div style={{ display: 'flex', gap: 16, justifyContent: 'flex-end', margin: '24px 0' }}>
+      <div
+        style={{ display: 'flex', gap: 16, justifyContent: 'flex-end', margin: '24px 0' }}
+        className="filter-bar-responsive"
+      >
         {filterOptions.map((option, idx) => (
           <FilterButton
             key={option.label}
@@ -61,6 +72,17 @@ const HomePage: React.FC = () => {
           />
         ))}
       </div>
+      <style jsx>{`
+        @media (max-width: 700px) {
+          div[style*='padding-left: 94px'] {
+            padding-left: 54px !important;
+            padding-right: 54px !important;
+          }
+          .filter-bar-responsive {
+            justify-content: center !important;
+          }
+        }
+      `}</style>
       <div
         style={{
           display: 'grid',

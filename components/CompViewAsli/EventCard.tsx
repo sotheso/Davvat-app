@@ -1,7 +1,7 @@
 import React from 'react';
-import BazaarcheButton from '../CompViewDetails/ButtonCard/BazaarcheButton';
-import RoundIconButton from '../CompViewDetails/ButtonCard/RoundIconButton';
-import DateButton from '../CompViewDetails/ButtonCard/DateButton';
+import BazaarcheButton from './CompDetails/ButtonCard/BazaarcheButton';
+import RoundIconButton from './CompDetails/ButtonCard/RoundIconButton';
+import DateButton from './CompDetails/ButtonCard/DateButton';
 
 const EventCard: React.FC = () => {
   return (

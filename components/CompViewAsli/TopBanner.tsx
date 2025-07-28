@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
-import BazaarcheButton from '../CompViewDetails/ButtonCard/BazaarcheButton';
-import DateButton from '../CompViewDetails/ButtonCard/DateButton';
-import SectionTitle from '../CompViewDetails/Text/SectionTitle';
+import BazaarcheButton from './CompDetails/ButtonCard/BazaarcheButton';
+import DateButton from './CompDetails/ButtonCard/BazaarcheButton';
+import SectionTitle from './CompDetails/Text/SectionTitle';
 
 const BannerCard: React.FC = () => {
   const router = useRouter();
@@ -93,8 +93,7 @@ const BannerCard: React.FC = () => {
           style={{
             position: isMobile ? 'static' : 'absolute',
             right: isMobile ? 'auto' : '40%',
-            top: isMobile ? 'auto' : '50%',
-            transform: isMobile ? 'none' : 'translateY(-50%)',
+            top: isMobile ? 'auto' : '24px',
             width: isMobile ? '100%' : '58%',
             minWidth: 200,
             maxWidth: 637,

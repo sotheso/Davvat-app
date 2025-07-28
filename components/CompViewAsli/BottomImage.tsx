@@ -19,6 +19,7 @@ const bannerStyle: React.CSSProperties = {
   padding: '32px 40px',
   boxSizing: 'border-box',
   overflow: 'hidden',
+  transition: 'width 0.2s',
 };
 
 const avatarStyle: React.CSSProperties = {
@@ -34,18 +35,25 @@ const avatarStyle: React.CSSProperties = {
   marginBottom: '8px',
 };
 
+const responsiveContainer: React.CSSProperties = {
+  width: '100%',
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+  gap: '24px',
+  margin: '48px 0',
+  flexWrap: 'wrap',
+};
+
 const BottomImage: React.FC = () => {
   return (
-    <div style={{
-      width: '100%',
-      display: 'flex',
-      justifyContent: 'center',
-      alignItems: 'center',
-      gap: '24px',
-      margin: '48px 0',
-    }}>
+    <div style={responsiveContainer}>
       {[1, 2].map((idx) => (
-        <div key={idx} style={bannerStyle}>
+        <div
+          key={idx}
+          style={bannerStyle as React.CSSProperties}
+          className="bottom-banner-responsive"
+        >
           {/* توضیحات */}
           <div style={{
             flex: 1,
@@ -100,6 +108,15 @@ const BottomImage: React.FC = () => {
           </div>
         </div>
       ))}
+      <style jsx>{`
+        @media (max-width: 700px) {
+          .bottom-banner-responsive {
+            width: 90% !important;
+            min-width: unset !important;
+            margin: 16px 0 !important;
+          }
+        }
+      `}</style>
     </div>
   );
 };

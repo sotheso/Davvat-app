@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import EventCard from './EventCard';
-import SectionTitle from '../CompViewDetails/Text/SectionTitle';
+import SectionTitle from './CompDetails/Text/SectionTitle';
 import { useCarousel } from '../../Functions/useCarousel';
 
 const EventCardCarousel: React.FC = () => {
