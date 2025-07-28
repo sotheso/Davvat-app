@@ -2,9 +2,10 @@ import React, { useRef, useEffect, useState } from 'react';
 import EventCard from '../components/CompViewAsli/EventCard';
 import TopBar from '../components/CompViewAsli/TopBar';
 import EventCardCarousel from '../components/CompViewAsli/StoryCards';
-import BannerCard from '../components/CompViewAsli/BannerCard';
+import BannerCard from '../components/CompViewAsli/TopBanner';
 import SectionTitle from '../components/CompViewDetails/Text/SectionTitle';
 import FilterButton from '../components/CompViewDetails/ButtonCard/FilterButton';
+import BottomImage from '../components/CompViewAsli/BottomImage';
 
 const filterOptions = [
   { label: 'نزدیک‌ترین' },
@@ -82,6 +83,13 @@ const HomePage: React.FC = () => {
         <EventCard />
         <EventCard />
       </div>
+
+
+      <div style={{ height: 64 }} />
+
+
+      <SectionTitle>برندها</SectionTitle>
+      <BottomImage />
     </div>
   );
 };
