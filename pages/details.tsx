@@ -1,6 +1,8 @@
 import React from 'react';
 import TopBar from '../components/CompViewAsli/TopBar';
 import DetailsImage from '../components/CompViewDetails/DetailsImage';
+import BazaarcheButton from '../components/CompViewAsli/CompDetails/ButtonCard/BazaarcheButton';
+import CapsuleButtonGroup from '../components/CompViewDetails/CapsuleButtonGroup';
 
 const DetailsPage: React.FC = () => {
   return (
@@ -12,48 +14,89 @@ const DetailsPage: React.FC = () => {
 
 
         {/* Main content */}
-        <div style={{ display: 'flex', flexDirection: 'row-reverse', gap: 32, alignItems: 'flex-start', justifyContent: 'center' }}>
+        <div style={{ display: 'flex', flexDirection: 'row-reverse', gap: 64, alignItems: 'flex-start', justifyContent: 'center' }}>
           {/* Banner box */}
           <DetailsImage />
           {/* Info section */}
           <div style={{ flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'flex-end' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: 16, marginBottom: 8 }}>
-              <span style={{ fontWeight: 700, fontSize: 24 }}>ایونت بساط</span>
-              <span style={{ color: '#F26430', fontWeight: 700, fontSize: 18 }}>۳.۵ امتیاز</span>
+              <BannerTitle>ایونت بساط</BannerTitle>
+              {/* امتیاز حذف شد */}
             </div>
-            <div style={{ textAlign: 'right', fontSize: 18, color: '#222', marginBottom: 16, lineHeight: 2 }}>
-              وقتی شب و بساط و وافور با منقل ترکیب بشن، اون شب یه شب فراموش شدنیه! اون شب یه شب فراموش شدنیه! پس سیخ یادتون نره!وقتی شب و بساط و وافور با منقل ترکیب بشن، اون شب یه شب فراموش شدنیه! پس سیخ یادتون نره!
+            <BannerParagraph>
+            وقتی شب و بساط و وافور با منقل ترکیب بشن، اون شب یه شب فراموش شدنیه! پس سیخ یادتون نره!وقتی شب و بساط و وافور با منقل ترکیب بشن، اون شب یه شب فراموش شدنیه! پس سیخ یادتون نره!وقتی شب و بساط و وافور با منقل ترکیب بشن، اون شب یه شب فراموش شدنیه! پس سیخ یادتون نره!وقتی شب و بساط و وافور با منقل ترکیب بشن، اون شب یه شب فراموش شدنیه! پس سیخ یادتون نره!            </BannerParagraph>
+            <div style={{ display: 'flex', gap: 8, marginBottom: 24 , marginTop: 12}}>
+              <BazaarcheButton>بازارچه</BazaarcheButton>
+              <BazaarcheButton>بازارچه</BazaarcheButton>
+              <BazaarcheButton>بازارچه</BazaarcheButton>
+              <BazaarcheButton>بازارچه</BazaarcheButton>
+              <BazaarcheButton>بازارچه</BazaarcheButton>
             </div>
-            <div style={{ display: 'flex', gap: 8, marginBottom: 16 }}>
-              <button style={{ background: '#F26430', color: '#fff', border: 'none', borderRadius: 16, padding: '4px 24px', fontSize: 16, cursor: 'pointer' }}>بازارچه</button>
-              <button style={{ background: '#F26430', color: '#fff', border: 'none', borderRadius: 16, padding: '4px 24px', fontSize: 16, cursor: 'pointer' }}>بازارچه</button>
-              <button style={{ background: '#F26430', color: '#fff', border: 'none', borderRadius: 16, padding: '4px 24px', fontSize: 16, cursor: 'pointer' }}>بازارچه</button>
-              <button style={{ background: '#F26430', color: '#fff', border: 'none', borderRadius: 16, padding: '4px 24px', fontSize: 16, cursor: 'pointer' }}>بازارچه</button>
-              <button style={{ background: '#F26430', color: '#fff', border: 'none', borderRadius: 16, padding: '4px 24px', fontSize: 16, cursor: 'pointer' }}>بازارچه</button>
-            </div>
-            <div style={{ fontWeight: 700, color: '#F26430', fontSize: 20, marginTop: 16 }}>آدرس:</div>
-            <div style={{ fontSize: 16, marginBottom: 16, textAlign: 'right' }}>
+            <BannerTitle style={{ color: '#F26430', marginTop: 24, marginBottom: 12 }}>:آدرس</BannerTitle>
+            <BannerParagraph style={{ marginBottom: 16 }}>
               خیابان ایرانشهر، تقاطع بهشتی، کوچه علیمرادی، پلاک ۱۲، کافه عمارت دل
-            </div>
-            <div style={{ fontWeight: 700, color: '#F26430', fontSize: 20, marginTop: 8 }}>تاریخ:</div>
-            <div style={{ fontSize: 16, marginBottom: 32, textAlign: 'right' }}>
+            </BannerParagraph>
+            <BannerTitle style={{ color: '#F26430', marginTop: 24, marginBottom: 12 }}>:تاریخ</BannerTitle>
+            <BannerParagraph style={{ marginBottom: 32 }}>
               ۲۵ فروردین الی ۳ اسفند - از ساعت ۲۲ تا ۴ صبح
-            </div>
-            <div style={{ display: 'flex', gap: 16, marginTop: 16 }}>
-              <button style={{ background: '#F26430', color: '#fff', border: 'none', borderRadius: 24, padding: '8px 32px', fontSize: 18, fontWeight: 700, cursor: 'pointer' }}>یادآوری</button>
-              <button style={{ background: '#fff', color: '#F26430', border: '2px solid #F26430', borderRadius: 24, padding: '8px 32px', fontSize: 18, fontWeight: 700, cursor: 'pointer' }}>گوگل مپ</button>
-              <button style={{ background: '#F3F3F3', color: '#F26430', border: 'none', borderRadius: 24, padding: '8px 32px', fontSize: 18, fontWeight: 700, cursor: 'pointer' }}>بچینیم!</button>
+            </BannerParagraph>
+            <div style={{ marginTop: 16, display: 'flex', justifyContent: 'center' }}>
+              <CapsuleButtonGroup />
             </div>
           </div>
-        </div>
-        {/* Dots */}
-        <div style={{ display: 'flex', justifyContent: 'center', marginTop: 32, gap: 8 }}>
-          <span style={{ width: 12, height: 12, background: '#F3F3F3', borderRadius: '50%', display: 'inline-block' }} />
-          <span style={{ width: 12, height: 12, background: '#F3F3F3', borderRadius: '50%', display: 'inline-block' }} />
-          <span style={{ width: 12, height: 12, background: '#F26430', borderRadius: '50%', display: 'inline-block' }} />
         </div>
       </div>
   );
 };
 
-export default DetailsPage; 
+export default DetailsPage;
+
+// BannerTitle component
+const BannerTitle: React.FC<React.HTMLAttributes<HTMLDivElement>> = ({ children, style, ...props }) => (
+  <div
+    style={{
+      width: '181.354px',
+      height: '26.041px',
+      flexShrink: 0,
+      color: '#000',
+      textAlign: 'right',
+      fontFamily: 'Ravi',
+      fontSize: 24,
+      fontStyle: 'normal',
+      fontWeight: 700,
+      lineHeight: 'normal',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'flex-end',
+      ...style
+    }}
+    {...props}
+  >
+    {children}
+  </div>
+);
+
+// BannerParagraph component
+const BannerParagraph: React.FC<React.HTMLAttributes<HTMLDivElement>> = ({ children, ...props }) => (
+  <div
+    style={{
+      width: '708px',
+      height: '169px',
+      flexShrink: 0,
+      color: '#000',
+      textAlign: 'right',
+      fontFamily: 'Ravi',
+      fontSize: 20,
+      fontStyle: 'normal',
+      fontWeight: 400,
+      lineHeight: '35px',
+      marginBottom: 16,
+      display: 'flex',
+      alignItems: 'flex-start',
+      justifyContent: 'flex-end',
+    }}
+    {...props}
+  >
+    {children}
+  </div>
+); 

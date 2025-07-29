@@ -4,7 +4,9 @@ import SectionTitle from './CompDetails/Text/SectionTitle';
 import { useCarousel } from '../../Functions/useCarousel';
 
 const EventCardCarousel: React.FC = () => {
-  const [isMobile, setIsMobile] = useState(false);
+  const [isMobile, setIsMobile] = useState<undefined | boolean>(undefined);
+  // مقدار اولیه امن برای جلوگیری از خطای هوک
+  const { currentIndex, goToPrevious, goToNext, setCurrentIndex } = useCarousel(0, 3500);
 
   useEffect(() => {
     const handleResize = () => {
@@ -25,7 +27,14 @@ const EventCardCarousel: React.FC = () => {
   const visibleCardsWidth = (cardWidth * cardsPerView) + (cardGap * (cardsPerView - 1)) - (2 * sidePeek);
   const maxIndex = cards.length - cardsPerView;
 
-  const { currentIndex, goToPrevious, goToNext, setCurrentIndex } = useCarousel(maxIndex, 3500);
+  // وقتی مقدار واقعی isMobile مشخص شد، مقدار maxIndex را ست کن
+  useEffect(() => {
+    if (isMobile !== undefined) {
+      setCurrentIndex(0); // همیشه به اول برگردد
+    }
+  }, [isMobile, setCurrentIndex]);
+
+  if (isMobile === undefined) return null;
 
   // Check if buttons should be disabled
   const isPreviousDisabled = currentIndex === 0;

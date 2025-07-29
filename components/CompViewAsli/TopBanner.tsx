@@ -6,7 +6,7 @@ import SectionTitle from './CompDetails/Text/SectionTitle';
 
 const BannerCard: React.FC = () => {
   const router = useRouter();
-  const [isMobile, setIsMobile] = useState(false);
+  const [isMobile, setIsMobile] = useState<undefined | boolean>(undefined);
 
   useEffect(() => {
     const handleResize = () => {
@@ -16,6 +16,8 @@ const BannerCard: React.FC = () => {
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
   }, []);
+
+  if (isMobile === undefined) return null;
 
   return (
     <div style={{ marginBottom: 32, cursor: 'pointer' }} onClick={() => router.push('/details')}>
