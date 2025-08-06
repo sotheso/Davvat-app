@@ -1,14 +1,36 @@
 import React, { useState } from 'react';
 
-const images = [
-  // اینجا می‌توانی عکس واقعی قرار دهی
+interface DetailsImageProps {
+  images?: (string | { bg?: string; src?: string })[];
+}
+
+const defaultImages = [
   { bg: '#F26430' },
   { bg: '#F2C230' },
   { bg: '#30B7F2' },
 ];
 
-const DetailsImage: React.FC = () => {
+const DetailsImage: React.FC<DetailsImageProps> = ({ images }) => {
+  const imgs = images && images.length > 0 ? images : defaultImages;
   const [active, setActive] = useState(0);
+  const [imgLoaded, setImgLoaded] = useState(false);
+
+  const current = imgs[active];
+  let bg: string | undefined = undefined;
+  let src: string | undefined = undefined;
+  if (typeof current === 'string') {
+    src = current;
+  } else {
+    bg = current.bg;
+    src = 'src' in current ? current.src : undefined;
+  }
+  // اگر bg وجود نداشت، رنگ پیش‌فرض بگذار
+  if (!bg) bg = '#F26430';
+
+  // اگر عکس تغییر کرد، imgLoaded را false کن
+  React.useEffect(() => {
+    setImgLoaded(false);
+  }, [active, src]);
 
   return (
     <div
@@ -17,15 +39,30 @@ const DetailsImage: React.FC = () => {
         height: '620.953px',
         flexShrink: 0,
         borderRadius: '19px',
-        background: images[active].bg,
+        background: (!src || !imgLoaded) ? bg : undefined,
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
         position: 'relative',
         transition: 'background 0.3s',
+        overflow: 'hidden',
       }}
     >
-      {/* اینجا می‌توانی عکس یا محتوای دلخواه قرار دهی */}
+      {/* نمایش عکس اگر src وجود داشت و لود شده */}
+      {src && (
+        <img
+          src={src}
+          alt={`event-image-${active}`}
+          style={{
+            width: '100%',
+            height: '100%',
+            objectFit: 'cover',
+            borderRadius: '19px',
+            display: imgLoaded ? 'block' : 'none',
+          }}
+          onLoad={() => setImgLoaded(true)}
+        />
+      )}
       {/* دایره‌های پایین */}
       <div style={{
         position: 'absolute',
@@ -37,7 +74,7 @@ const DetailsImage: React.FC = () => {
         alignItems: 'center',
         gap: 8,
       }}>
-        {images.map((img, idx) => (
+        {imgs.map((img, idx) => (
           <button
             key={idx}
             onClick={() => setActive(idx)}

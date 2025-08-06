@@ -1,8 +1,8 @@
 import React from 'react';
 
 const rectangleDiv: React.CSSProperties = {
-  width: '130px',
-  height: '44px',
+  width: '145px',
+  height: '50px',
   flexShrink: 0,
   borderRadius: '24px',
   position: 'relative',
@@ -19,7 +19,7 @@ const rectangleDiv: React.CSSProperties = {
 
 const textDiv: React.CSSProperties = {
   position: 'relative',
-  fontSize: 18,
+  fontSize: 32,
   fontWeight: 600,
   fontFamily: 'Ravi',
   color: '#fff',
@@ -28,9 +28,9 @@ const textDiv: React.CSSProperties = {
 };
 
 const bechinimStyle: React.CSSProperties = {
-  width: '52px',
+  width: '60px',
   position: 'relative',
-  fontSize: 18,
+  fontSize: 19,
   fontWeight: 600,
   fontFamily: 'Ravi',
   color: '#f26430',
@@ -39,8 +39,8 @@ const bechinimStyle: React.CSSProperties = {
 };
 
 const iconStyle: React.CSSProperties = {
-  width: '22px',
-  height: '22px',
+  width: '24px',
+  height: '24px',
   flexShrink: 0,
   marginLeft: '10px',
   display: 'inline-block',
