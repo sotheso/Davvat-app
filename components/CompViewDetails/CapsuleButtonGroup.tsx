@@ -1,83 +1,117 @@
 import React from 'react';
 
 const rectangleDiv: React.CSSProperties = {
-  width: '156px',
-  height: '56px',
+  width: '130px',
+  height: '44px',
   flexShrink: 0,
-  borderRadius: '51px',
-  backgroundColor: '#f26430',
+  borderRadius: '24px',
   position: 'relative',
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
-  margin: '0 8px',
+  margin: '0 6px',
+  backdropFilter: 'blur(15px)',
+  WebkitBackdropFilter: 'blur(15px)',
+  backgroundColor: 'rgba(242, 100, 48, 0.9)',
+  border: '1px solid rgba(255, 255, 255, 0.2)',
+  boxShadow: '0 4px 15px rgba(0,0,0,0.1)'
 };
 
 const textDiv: React.CSSProperties = {
   position: 'relative',
-  fontSize: 24,
+  fontSize: 18,
   fontWeight: 600,
   fontFamily: 'Ravi',
   color: '#fff',
   textAlign: 'center',
-  display: 'inline-block',
+  display: 'inline-block'
 };
 
 const bechinimStyle: React.CSSProperties = {
-  width: '79px',
+  width: '52px',
   position: 'relative',
-  fontSize: 24,
+  fontSize: 18,
   fontWeight: 600,
   fontFamily: 'Ravi',
   color: '#f26430',
   textAlign: 'center',
-  display: 'inline-block',
+  display: 'inline-block'
 };
 
 const iconStyle: React.CSSProperties = {
-  width: '29px',
-  height: '29px',
+  width: '22px',
+  height: '22px',
   flexShrink: 0,
-  marginLeft: '16px',
+  marginLeft: '10px',
   display: 'inline-block',
-  verticalAlign: 'middle',
+  verticalAlign: 'middle'
 };
 
-const containerStyle: React.CSSProperties = {
-  width: '513px',
-  height: '87px',
-  flexShrink: 0,
-  borderRadius: '83px',
-  border: '2px solid #EDEDED',
-  background: '#F3F3F3',
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'space-between',
-  padding: '0 24px',
-  gap: '16px',
-};
+interface CapsuleButtonGroupProps {
+  showReminder?: boolean;
+  showConfirm?: boolean;
+  mapUrl?: string;
+}
 
-const CapsuleButtonGroup: React.FC = () => {
+const CapsuleButtonGroup: React.FC<CapsuleButtonGroupProps> = ({
+  showReminder = true,
+  showConfirm = true,
+  mapUrl
+}) => {
+  const handleMapClick = () => {
+    if (mapUrl) {
+      window.open(mapUrl, '_blank');
+    }
+  };
+
+  const handleReminderClick = () => {
+    // Add reminder functionality here
+    console.log('Reminder clicked');
+  };
+
+  const handleConfirmClick = () => {
+    // Add confirm functionality here
+    console.log('Confirm clicked');
+  };
+
   return (
     <div style={{
-      ...containerStyle,
-      gap: 0,
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      gap: '12px',
+      padding: '12px 12px'
     }}>
-      <div style={rectangleDiv}>
-        <div style={textDiv}>یادآوری</div>
-      </div>
-      <div style={rectangleDiv}>
+      {showReminder && (
+        <div className="capsule-btn" style={rectangleDiv} onClick={handleReminderClick} role="button" tabIndex={0}>
+          <div style={textDiv}>یادآوری</div>
+        </div>
+      )}
+      <div
+        className="capsule-btn"
+        style={{
+          ...rectangleDiv,
+          opacity: mapUrl ? 1 : 0.5,
+          cursor: mapUrl ? 'pointer' : 'not-allowed'
+        }}
+        onClick={mapUrl ? handleMapClick : undefined}
+        role="button"
+        tabIndex={0}
+        aria-disabled={!mapUrl}
+      >
         <div style={textDiv}>گوگل‌مپ</div>
       </div>
-      <div style={{ marginLeft: '16px' }}>
-        <span style={{ display: 'flex', alignItems: 'center' }}>
-          <svg style={iconStyle} xmlns="http://www.w3.org/2000/svg" width="29" height="29" viewBox="0 0 29 29" fill="none">
-            <circle cx="14.5" cy="14.5" r="14.5" fill="#F26430" />
-            <circle cx="14.5" cy="14.5" r="7.5" fill="#FFF" />
-          </svg>
-          <div style={{ ...bechinimStyle, marginLeft: '16px' }}>بچینیم!</div>
-        </span>
-      </div>
+      {showConfirm && (
+        <div className="capsule-btn" style={{ display: 'flex', alignItems: 'center' }}>
+          <span style={{ display: 'flex', alignItems: 'center' }} onClick={handleConfirmClick} role="button" tabIndex={0}>
+            <svg style={iconStyle} xmlns="http://www.w3.org/2000/svg" width="29" height="29" viewBox="0 0 29 29" fill="none">
+              <circle cx="14.5" cy="14.5" r="14.5" fill="#F26430" />
+              <circle cx="14.5" cy="14.5" r="7.5" fill="#FFF" />
+            </svg>
+            <div style={{ ...bechinimStyle, marginLeft: '16px' }}>بچینیم!</div>
+          </span>
+        </div>
+      )}
     </div>
   );
 };

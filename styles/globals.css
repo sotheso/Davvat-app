@@ -75,4 +75,63 @@ h1, h2, h3, h4, h5, h6 {
 .font-semibold { font-weight: 600 !important; }
 .font-bold { font-weight: 700 !important; }
 .font-extrablack { font-weight: 800 !important; }
-.font-black { font-weight: 900 !important; } 
+.font-black { font-weight: 900 !important; }
+
+.glassy-action-bar-inner {
+  background-color: rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border-top: 1px solid #EDEDED;
+  padding: 12px 16px;
+  border-radius: 60px;
+  box-shadow: 0 -2px 10px rgba(0,0,0,0.02);
+  margin: 0 16px;
+  max-width: 90vw;
+  min-width: 300px;
+  transition: all 0.2s;
+}
+
+@media (max-width: 600px) {
+  .glassy-action-bar-inner {
+    padding: 8px 4px;
+    border-radius: 32px;
+    min-width: 180px;
+    max-width: 98vw;
+  }
+}
+
+.capsule-btn {
+  width: 130px;
+  height: 44px;
+  border-radius: 24px;
+  margin: 0 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+}
+.capsule-btn .Ravi, .capsule-btn div {
+  font-size: 18px !important;
+}
+.capsule-btn svg {
+  width: 22px !important;
+  height: 22px !important;
+  margin-left: 10px !important;
+}
+
+@media (max-width: 600px) {
+  .capsule-btn {
+    width: 100px;
+    height: 36px;
+    border-radius: 20px;
+    margin: 0 4px;
+  }
+  .capsule-btn .Ravi, .capsule-btn div {
+    font-size: 15px !important;
+  }
+  .capsule-btn svg {
+    width: 18px !important;
+    height: 18px !important;
+    margin-left: 8px !important;
+  }
+} 
