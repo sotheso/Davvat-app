@@ -10,7 +10,7 @@ const BannerCard: React.FC = () => {
 
   useEffect(() => {
     const handleResize = () => {
-      setIsMobile(window.innerWidth < 900);
+      setIsMobile(window.innerWidth < 768);
     };
     handleResize();
     window.addEventListener('resize', handleResize);
@@ -26,14 +26,14 @@ const BannerCard: React.FC = () => {
         style={{
           width: '100%',
           maxWidth: 1104,
-          minHeight: isMobile ? 400 : 240,
+          minHeight: isMobile ? 320 : 240,
           height: 'auto',
-          borderRadius: 40,
+          borderRadius: isMobile ? 24 : 40,
           border: '1px solid #EDEDED',
           background: '#FCFCFC',
           display: 'flex',
           flexDirection: isMobile ? 'column' : 'row',
-          gap: 16,
+          gap: isMobile ? 12 : 16,
           alignItems: isMobile ? 'stretch' : 'center',
           position: 'relative',
           padding: isMobile ? 16 : 0,
@@ -48,11 +48,11 @@ const BannerCard: React.FC = () => {
             width: isMobile ? '100%' : '33%',
             minWidth: isMobile ? 0 : 200,
             maxWidth: isMobile ? '100%' : 370,
-            height: isMobile ? 120 : 200,
+            height: isMobile ? 100 : 200,
             flexShrink: 0,
-            borderRadius: 24,
+            borderRadius: isMobile ? 16 : 24,
             background: '#F26430',
-            margin: isMobile ? '0 auto 16px auto' : 16,
+            margin: isMobile ? '0 auto 12px auto' : 16,
           }}
         />
         {/* Button row absolutely positioned at bottom left of orange block */}
@@ -64,9 +64,10 @@ const BannerCard: React.FC = () => {
             display: 'flex',
             flexDirection: 'row',
             alignItems: 'center',
-            gap: 8,
-            marginTop: isMobile ? 16 : 0,
+            gap: isMobile ? 6 : 8,
+            marginTop: isMobile ? 12 : 0,
             justifyContent: isMobile ? 'center' : 'flex-start',
+            flexWrap: isMobile ? 'wrap' : 'nowrap',
           }}
         >
           <BazaarcheButton>دانش</BazaarcheButton>
@@ -97,16 +98,17 @@ const BannerCard: React.FC = () => {
             right: isMobile ? 'auto' : '40%',
             top: isMobile ? 'auto' : '24px',
             width: isMobile ? '100%' : '58%',
-            minWidth: 200,
-            maxWidth: 637,
+            minWidth: isMobile ? 0 : 200,
+            maxWidth: isMobile ? '100%' : 637,
             display: 'flex',
             flexDirection: 'column',
-            alignItems: 'flex-end',
+            alignItems: isMobile ? 'center' : 'flex-end',
             margin: isMobile ? '0 auto' : 0,
-            marginTop: isMobile ? 16 : 0,
+            marginTop: isMobile ? 12 : 0,
+            textAlign: isMobile ? 'center' : 'right',
           }}
         >
-          <BannerTitle style={{ marginBottom: 8 }}>
+          <BannerTitle style={{ marginBottom: isMobile ? 6 : 8 }}>
             ایونت بساط
           </BannerTitle>
           <BannerParagraph>
@@ -117,7 +119,6 @@ const BannerCard: React.FC = () => {
     </div>
   );
 };
-
 
 // BannerTitle component
 const BannerTitle: React.FC<React.HTMLAttributes<HTMLDivElement>> = ({ children, ...props }) => (

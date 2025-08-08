@@ -111,9 +111,14 @@ const BottomImage: React.FC = () => {
       <style jsx>{`
         @media (max-width: 700px) {
           .bottom-banner-responsive {
-            width: 90% !important;
+            width: 98% !important;
             min-width: unset !important;
-            margin: 16px 0 !important;
+            margin: 12px 0 !important;
+            padding: 16px 8px !important;
+            flex-direction: column !important;
+            align-items: center !important;
+            justify-content: center !important;
+            gap: 12px !important;
           }
         }
       `}</style>

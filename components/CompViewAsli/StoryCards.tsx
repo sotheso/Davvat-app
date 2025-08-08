@@ -5,27 +5,30 @@ import { useCarousel } from '../../Functions/useCarousel';
 
 const EventCardCarousel: React.FC = () => {
   const [isMobile, setIsMobile] = useState<undefined | boolean>(undefined);
-  // مقدار اولیه امن برای جلوگیری از خطای هوک
-  const { currentIndex, goToPrevious, goToNext, setCurrentIndex } = useCarousel(0, 3500);
-
+  
+  // 9 total cards
+  const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+  const cardWidth = 350.462;
+  const cardGap = 30;
+  
   useEffect(() => {
     const handleResize = () => {
-      setIsMobile(window.innerWidth < 900);
+      setIsMobile(window.innerWidth < 768);
     };
     handleResize();
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  // 9 total cards
-  const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
-  const cardWidth = 350.462;
-  const cardGap = 30;
   // Desktop: 3 at a time, Mobile: 1 at a time
   const cardsPerView = isMobile ? 1 : 3;
+  const maxIndex = cards.length - cardsPerView;
+  
+  // مقدار اولیه امن برای جلوگیری از خطای هوک
+  const { currentIndex, goToPrevious, goToNext, setCurrentIndex } = useCarousel(maxIndex, 3500);
+
   const sidePeek = isMobile ? 30 : 60; // مقدار دیده شدن کارت بعدی/قبلی
   const visibleCardsWidth = (cardWidth * cardsPerView) + (cardGap * (cardsPerView - 1)) - (2 * sidePeek);
-  const maxIndex = cards.length - cardsPerView;
 
   // وقتی مقدار واقعی isMobile مشخص شد، مقدار maxIndex را ست کن
   useEffect(() => {
@@ -56,12 +59,13 @@ const EventCardCarousel: React.FC = () => {
         {/* Cards Container - Show visible cards */}
         <div style={{
           display: 'flex',
-          justifyContent: 'flex-start',
+          justifyContent: isMobile ? 'center' : 'flex-start',
           alignItems: 'center',
           minHeight: '620.953px',
-          overflow: 'visible',
+          overflow: 'hidden', // تغییر از visible به hidden
           position: 'relative',
-          width: '100vw', // تغییر داده شد
+          width: isMobile ? '100%' : '100vw', // در موبایل عرض محدود
+          maxWidth: isMobile ? '400px' : 'none', // در موبایل حداکثر عرض
         }}>
           <div 
             style={{
@@ -71,7 +75,8 @@ const EventCardCarousel: React.FC = () => {
               transition: 'transform 0.5s ease-in-out',
               width: `${cards.length * (cardWidth + cardGap)}px`,
               flexShrink: 0,
-              overflow: 'visible',
+              overflow: 'hidden', // تغییر از visible به hidden
+              justifyContent: isMobile ? 'center' : 'flex-start',
             }}
           >
             {cards.map((cardId, idx) => (
